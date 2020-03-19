@@ -36,10 +36,6 @@ function play(e) {
     let key = document.querySelector(`[data-key="${e.keyCode}"]`),
         fileName = key.childNodes[3].innerText,
         audio = new Audio(`sounds/${fileName}.wav`);
-
-
-
-
     var counter = 0
     while (counter < 12) {
         if (!key) return;
@@ -51,6 +47,17 @@ function play(e) {
 }
 
 console.log(userPress);
+
+function isPro(userPress, recorded) {
+    for (var i = o; i < userPress.length; i++) {
+        if (userPress[i] == recorded[i]) {
+            return "You are Pro in DRUM";
+        } else {
+            alert("Sorry start again need more practice");
+        }
+    }
+}
+
 
 function removeActive(e) {
     let key = document.querySelector(`[data-key="${e.keyCode}"]`);
