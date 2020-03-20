@@ -57,14 +57,14 @@ function isPro(userPress, recorded) {
   for (var i = 0; i < userPress.length; i++) {
     if (userPress[i] == recorded[i]) {
       temp = true;
-    } else {
-      alert("Sorry start again need more practice");
-    }
+    } 
   }
   if (temp) {
     score = score + 10;
     alert("PRo...!! your SCORE: " + score);
-  }
+  }else {
+      alert("Sorry start again need more practice");
+    }
 }
 
 // PLAY FUNCTION
