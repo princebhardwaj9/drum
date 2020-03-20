@@ -8,7 +8,7 @@ var keyData = [
   "SNARE",
   "rs7000",
   "Throw",
-  "tek-beep-up",
+  "BEAT",
   "Moombah-Vocal-3",
   "classic-hh-Acu_Snr"
 ];
@@ -47,33 +47,14 @@ function myFunction() {
 
 const startButton = document.getElementById("start");
 startButton.addEventListener("click", randomData);
-document.getElementById("start").addEventListener("ended", myFunction);
-
-var userPress = [];
-
-// PLAY FUNCTION
-function play(e) {
-  let key = document.querySelector(`[data-key="${e.keyCode}"]`),
-    fileName = key.childNodes[3].innerText,
-    audio = new Audio(`sounds/${fileName}.wav`);
-
-  var counter = 0;
-  while (counter < 12) {
-    if (!key) return;
-    key.classList.add("active");
-    audio.play();
-    userPress.push(fileName);
-    counter++;
-  }
-  isPro(userPress, recorded);
-}
+// document.getElementById("start").addEventListener("ended", myFunction);
 
 // CHECK FUNCTION
 let score = 0;
 
 function isPro(userPress, recorded) {
   var temp = false;
-  for (var i = o; i < userPress.length; i++) {
+  for (var i = 0; i < userPress.length; i++) {
     if (userPress[i] == recorded[i]) {
       temp = true;
     } else {
@@ -81,7 +62,28 @@ function isPro(userPress, recorded) {
     }
   }
   if (temp) {
-    return score + 10;
+    score = score + 10;
+    alert("PRo...!! your SCORE: " + score);
+  }
+}
+
+// PLAY FUNCTION
+
+var userPress = [];
+var counter = 0;
+function play(e) {
+  let key = document.querySelector(`[data-key="${e.keyCode}"]`),
+    fileName = key.childNodes[3].innerText,
+    audio = new Audio(`sounds/${fileName}.wav`);
+  if (!key) return;
+  key.classList.add("active");
+  audio.play();
+  userPress.push(fileName);
+  counter++;
+  console.log(counter);
+  console.log(userPress);
+  if (counter == 12) {
+    isPro(userPress, recorded);
   }
 }
 
